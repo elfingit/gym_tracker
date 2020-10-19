@@ -17,7 +17,15 @@ class MyApp extends StatelessWidget {
       onGenerateTitle: (BuildContext context) => AppLocalization.of(context).translate("app_title"),
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        accentColor: Colors.white,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+
+        inputDecorationTheme: InputDecorationTheme(
+          fillColor: Colors.white,
+          filled: true,
+          border: const OutlineInputBorder()
+        ),
+
       ),
       home: HomePage(),
       localizationsDelegates: [
