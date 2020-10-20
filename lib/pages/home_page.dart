@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gym_tracker/stores/store.dart';
 import 'package:gym_tracker/utils/app_localization.dart';
+import 'package:gym_tracker/widgets/add_exersize_btn.dart';
+import 'package:gym_tracker/widgets/search_exersize.dart';
 
 class HomePage extends StatelessWidget {
+  final SearchStore store = SearchStore();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,6 +13,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(AppLocalization.of(context).translate("app_title")),
       ),
+      floatingActionButton: AddExersizeBtn(store: store),
       body: Stack(
         children: [
           Container(
@@ -31,15 +36,7 @@ class HomePage extends StatelessWidget {
                   right: 15.0
                 ),
                 color: Colors.white,
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: const OutlineInputBorder(),
-                    isDense: true,
-                    prefixIcon: Icon(Icons.search),
-                    labelText: 'Search',
-                    labelStyle: TextStyle(fontSize: 24),
-                  ),
-                ),
+                child: SearchExersize(store: store),
               ),
             ),
             Spacer(
